@@ -72,6 +72,7 @@ class Payone_Core_Model_Service_InitializeConfig
 
             $config = $this->loadFromCache();
             if (($config instanceof Payone_Core_Model_Config_Interface) && $config->getStoreId() === $storeId) {
+                $helperRegistry->unregister($registryKey);
                 $helperRegistry->register($registryKey, $config);
                 return $config;
             }
